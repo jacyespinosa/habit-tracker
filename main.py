@@ -13,6 +13,21 @@ USER_PARAMETERS = {
     "notMinor": "yes",
 }
 
-pixela_response = requests.post(url=PIXELA_ENDPOINT, json=USER_PARAMETERS)
-print(pixela_response.response.text)
+# pixela_response = requests.post(url=PIXELA_ENDPOINT, json=USER_PARAMETERS)
+# print(pixela_response.response.text)
 
+GRAPH_ENDPOINT = f"{PIXELA_ENDPOINT}/{USERNAME}/graphs"
+GRAPH_CONFIG = {
+    "id": GRAPH_ID,
+    "name": "Book Reading Graph",
+    "unit": "minutes",
+    "type": "int",
+    "color": "sora"
+}
+
+HEADERS = {
+    "X-USER-TOKEN": TOKEN
+}
+
+graph_response = requests.post(url=GRAPH_ENDPOINT, json=GRAPH_CONFIG, headers=HEADERS)
+print(graph_response.text)
