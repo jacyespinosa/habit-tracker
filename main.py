@@ -41,5 +41,13 @@ POST_CONFIG = {
     "quantity": "30",
 }
 
-post_response = requests.post(url=POST_ENDPONT, json=POST_CONFIG, headers=HEADERS)
-print(post_response.text)
+# post_response = requests.post(url=POST_ENDPONT, json=POST_CONFIG, headers=HEADERS)
+# print(post_response.text)
+
+PUT_ENDPOINT = f"{PIXELA_ENDPOINT}/{USERNAME}/graphs/{GRAPH_ID}/{today.strftime('%Y%m%d')}"
+PUT_CONFIG = {
+    "quantity": "60",
+}
+
+put_response = requests.put(url=PUT_ENDPOINT, json=PUT_CONFIG, headers=HEADERS)
+print(put_response.text)
